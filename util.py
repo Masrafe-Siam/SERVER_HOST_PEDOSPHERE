@@ -5,7 +5,6 @@ import numpy as np
 __model = None
 __data_columns = None
 
-
 def get_predicted_plant_type(soil_temp, soil_ph):
     if soil_temp < 0 or soil_temp > 50:
         return 'Invalid soil temperature value'
@@ -15,7 +14,6 @@ def get_predicted_plant_type(soil_temp, soil_ph):
     # Prepare the input for the model
     x = np.array([soil_temp, soil_ph]).reshape(1, -1)
     return __model.predict(x)[0]  # Fixed to predict properly
-
 
 def load_saved_artifacts():
     print("Loading saved artifacts... start")
@@ -29,10 +27,8 @@ def load_saved_artifacts():
             __model = pickle.load(f)
     print("Loading saved artifacts... done")
 
-
 def get_data_columns():
     return __data_columns
-
 
 if __name__ == '__main__':
     load_saved_artifacts()
